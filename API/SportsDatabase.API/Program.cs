@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SportsDatabase.API.Data;
+using SportsDatabase.API.Repositories.Implementation;
+using SportsDatabase.API.Repositories.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SportsDatabaseConnectionString"));
 });
+
+builder.Services.AddScoped<ITeamRepository, TeamRepository>();
 
 var app = builder.Build();
 

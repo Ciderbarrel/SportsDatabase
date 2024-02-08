@@ -34,7 +34,7 @@ namespace SportsDatabase.API.Migrations
                     IsConferenceGame = table.Column<bool>(type: "bit", nullable: true),
                     IsLeagueGame = table.Column<bool>(type: "bit", nullable: true),
                     IsAssociationGame = table.Column<bool>(type: "bit", nullable: true),
-                    GameNotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GameNotes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HomeTeamHistoryId = table.Column<int>(type: "int", nullable: true),
                     AwayTeamHistoryId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -66,8 +66,9 @@ namespace SportsDatabase.API.Migrations
                 name: "Teams",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CurrentTeamHistoryId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CurrentTeamHistoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

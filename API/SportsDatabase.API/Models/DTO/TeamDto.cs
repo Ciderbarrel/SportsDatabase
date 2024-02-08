@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SportsDatabase.API.Models.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SportsDatabase.API.Models.Domain
+namespace SportsDatabase.API.Models.DTO
 {
-    public class Team
+    public class TeamDto
     {
         public int Id { get; set; }
         public int? CurrentTeamHistoryId { get; set; }

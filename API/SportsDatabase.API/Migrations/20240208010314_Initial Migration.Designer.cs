@@ -12,7 +12,7 @@ using SportsDatabase.API.Data;
 namespace SportsDatabase.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240207230912_Initial Migration")]
+    [Migration("20240208010314_Initial Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -46,7 +46,6 @@ namespace SportsDatabase.API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("GameNotes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("HomeTeamHistoryId")
@@ -101,11 +100,13 @@ namespace SportsDatabase.API.Migrations
 
             modelBuilder.Entity("SportsDatabase.API.Models.Domain.Team", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<int>("CurrentTeamHistoryId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CurrentTeamHistoryId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

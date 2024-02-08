@@ -32,7 +32,7 @@ namespace SportsDatabase.API.Models.Domain
         public bool? IsLeagueGame { get; set; }
         // Association could be UEFA, CONCACAF, NCAA, NAIA
         public bool? IsAssociationGame { get; set; }
-        public string GameNotes { get; set; }
+        public string? GameNotes { get; set; }
 
         public int? HomeTeamHistoryId { get; set; }
         public int? AwayTeamHistoryId { get; set; }
